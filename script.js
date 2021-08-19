@@ -4,10 +4,19 @@ var Engine = Matter.Engine,
     World = Matter.World,
     Bodies = Matter.Bodies
 
+var engine 
+var world
+var box1
+
 function setup() {
-    createCanvas(600, 600)
+    createCanvas(600, 600) 
+    engine = Engine.create()
+    world = engine.world
+    Engine.run(engine)
+    box1 = new Box(200, 100, 50, 50)
 }
 
 function draw() {
     background(51)
-}
+    box1.show()
+} 
