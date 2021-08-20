@@ -6,17 +6,34 @@ var Engine = Matter.Engine,
 
 var engine 
 var world
-var box1
+var boxes = []
+
+var ground 
 
 function setup() {
-    createCanvas(600, 600) 
+    createCanvas(500, 500) 
     engine = Engine.create()
     world = engine.world
     Engine.run(engine)
-    box1 = new Box(200, 100, 50, 50)
+    var options = {
+        isStatic: true
+    }
+    ground = Bodies.rectangle(200, height - 50, width, 10, options)
+    World.add(world, ground)
+}
+
+function mousePressed() {
+    boxes.push(new Box(mouseX, mouseY, random(10, 40), random(10,40)))
 }
 
 function draw() {
     background(51)
-    box1.show()
+    for( var i = 0; i < boxes.length; i++) {
+        boxes[i].show()
+    }
+    noStroke(170)
+    strokeWeight(4)
+    rectMode(CENTER)
+    rect(ground.position.x, ground.position.y, width, 10)
+  
 } 
