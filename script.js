@@ -6,34 +6,32 @@ var Engine = Matter.Engine,
 
 var engine 
 var world
-var boxes = []
-
+var circles = []
+var boundaries = []
 var ground 
 
 function setup() {
     createCanvas(500, 500) 
     engine = Engine.create()
     world = engine.world
-    Engine.run(engine)
-    var options = {
-        isStatic: true
-    }
-    ground = Bodies.rectangle(200, height, width, 10, options)
-    World.add(world, ground)
+   
+    boundaries.push(new Boundary(150, height, width * 0.6, 50, 0.3))
+    boundaries.push(new Boundary(250, height / 2, width * 0.6, 50, - 0.3))
 }
 
-function mousePressed() {
-    boxes.push(new Box(mouseX, mouseY, 20, 20))
+function mouseDragged() {
+    circles.push(new Circle(mouseX, mouseY, random(5, 12)))
 }
 
 function draw() {
     background(51)
-    for( var i = 0; i < boxes.length; i++) {
-        boxes[i].show()
+    Engine.update(engine)
+    for( var i = 0; i < circles.length; i++) {
+        circles[i].show()
     }
-    noStroke(170)
-    strokeWeight(4)
-    rectMode(CENTER)
-    rect(ground.position.x, ground.position.y, width, 10)
-  
+
+    for (var i = 0; i < boundaries.length; i++) {
+        boundaries[i].show()
+    }
+   
 } 

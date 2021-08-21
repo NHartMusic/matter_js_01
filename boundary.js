@@ -1,9 +1,12 @@
-function Box(x, y, w, h) {
+function Boundary(x, y, w, h, a) {
     var options = {
-        friction: 0.3,
-        restitution: 0.6
+        friction: 0.1,
+        restitution: 0.6,
+        angle: a,
+        isStatic: true
     }
     this.body = Bodies.rectangle(x, y, w, h, options)
+    console.log(this.body)
     this.w = w
     this.h = h 
     World.add(world, this.body)
@@ -16,8 +19,8 @@ function Box(x, y, w, h) {
         rotate(angle)
         rectMode(CENTER)
         strokeWeight(1)
-        stroke(255)
-        fill(127)
+        noStroke()
+        fill(0)
         rect(0, 0, this.w, this.h)
         pop()
     }
