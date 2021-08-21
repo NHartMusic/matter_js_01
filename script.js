@@ -18,12 +18,12 @@ function setup() {
     var options = {
         isStatic: true
     }
-    ground = Bodies.rectangle(200, height - 50, width, 10, options)
+    ground = Bodies.rectangle(200, height, width, 10, options)
     World.add(world, ground)
 }
 
 function mousePressed() {
-    boxes.push(new Box(mouseX, mouseY, random(10, 40), random(10,40)))
+    boxes.push(new Box(mouseX, mouseY, 20, 20))
 }
 
 function draw() {
