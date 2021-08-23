@@ -15,8 +15,8 @@ function setup() {
     engine = Engine.create()
     world = engine.world
    
-    boundaries.push(new Boundary(150, height, width * 0.6, 50, 0.3))
-    boundaries.push(new Boundary(250, height / 2, width * 0.6, 50, - 0.3))
+    boundaries.push(new Boundary(150, 150, width * 0.6, 20, 0.3))
+    boundaries.push(new Boundary(250, 350, width * 0.6, 20, - 0.3))
 }
 
 function mouseDragged() {
